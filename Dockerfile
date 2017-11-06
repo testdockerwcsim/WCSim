@@ -12,7 +12,7 @@ USER root
 #######################
 
 ### Required package for ROOT
-RUN sudo yum install -y \
+RUN yum install -y \
     wget \
     tar \
     cmake \
