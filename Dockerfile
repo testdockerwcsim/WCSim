@@ -108,3 +108,4 @@ RUN cd $HYPERKDIR \
 
 ### Open terminal
 CMD ["/bin/bash"]
+ 
