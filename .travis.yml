@@ -14,7 +14,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get -y install docker-ce
   - docker --version
-  - docker pull brichards64/test
+  - docker pull brichards64/test:firsttry
   - docker load -i dockerimage
   - docker run -d -p 127.0.0.1:80:4567 wcsim /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR; make clean; make rootcint; make"
 
