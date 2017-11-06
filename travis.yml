@@ -1,0 +1,15 @@
+sudo: required
+
+language: cpp
+
+services:
+  - docker
+
+before_install:
+  - sudo docker build -t wcsim .
+  - docker run -d -p 127.0.0.1:80:4567 wcsim /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR; make clean; make rootcint; make"
+  - docker ps -a
+  - docker run carlad/sinatra /bin/sh -c "cd /root/sinatra; bundle exec rake test"
+
+script:
+  - true
