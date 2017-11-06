@@ -12,8 +12,6 @@ USER root
 #######################
 
 ### Required package for ROOT
-RUN sysctl dev.mem.restricted.
-
 RUN yum install -y \
     wget \
     tar \
