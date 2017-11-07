@@ -16,6 +16,7 @@ before_install:
   - docker --version
   - docker pull brichards64/test:firsttry
   - docker run -v `pwd`:/root/outfolder -d -p 127.0.0.1:80:4567 brichards64/test:firsttry /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR; make clean; make rootcint; make > /root/outfolder/testlog"
+  - docker run brichards64/test:firsttry /bin/sh -c "echo hello"
   - more testlog
 
 script:
