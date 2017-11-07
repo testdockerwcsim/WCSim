@@ -15,7 +15,8 @@ before_install:
   - sudo apt-get -y install docker-ce
   - docker --version
   - docker pull brichards64/test:firsttry
-  - docker run -d -p 127.0.0.1:80:4567 brichards64/test:firsttry /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR; make clean; make rootcint; make"
+  - docker run -v `pwd`:/root/outfolder -d -p 127.0.0.1:80:4567 brichards64/test:firsttry /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR; make clean; make rootcint; make > /root/outfolder/testlog"
+  - more testlog
 
 script:
   - true
