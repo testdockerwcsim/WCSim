@@ -10,7 +10,7 @@ services:
 
 before_install:
   - docker pull brichards64/test
-  - docker run -v `pwd`:/root/test brichards64/test /bin/sh -c "ls /root/test/; cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; make clean; make rootcint; make > testlog; echo hello > bentest"
+  - docker run -v `pwd`:/root/HyperK/WCSim brichards64/test /bin/sh -c "ls /root/HyperK/WCSim/; cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; make clean; make rootcint; make > testlog; echo hello > bentest"
 
 script:
   - if [ -e bentest ]; then true; else false; fi
