@@ -17,7 +17,7 @@ before_install:
   - docker pull brichards64/test:firsttry
   - docker run -v `pwd`:/root/outfolder -d -p 127.0.0.1:80:4567 brichards64/test:firsttry /bin/sh -c "cd $HYPERKDIR; source env-WCSim.sh; cd $WCSIMDIR"
   - docker ps -a
-  - docker run -v `pwd`:/root/outfolder brichards64/test:firsttry /bin/sh -c "cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd WCSim; make clean; make rootcint; make > /root/outfolder/testlog; echo hello > bentest"
+  - docker run -v `pwd`:/root/outfolder brichards64/test:firsttry /bin/sh -c "cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd WCSim; make clean; make rootcint; make > /root/outfolder/testlog; echo hello > bentest; ls"
   - docker run brichards64/test:firsttry /bin/sh -c "cd /root/HyperK/WCSim; ls"
   - cat testlog
 
