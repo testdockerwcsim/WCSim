@@ -1,9 +1,6 @@
 ### Download base image from cern repo on docker hub
 FROM cern/slc6-base:latest
 
-### Credits
-MAINTAINER Stephane Zsoldos <s.zsoldos@qmul.ac.uk>
-
 ### Run the following commands as super user (root):
 USER root
 
@@ -100,11 +97,8 @@ ENV G4LIB $G4INSTALL/lib
 
 ADD env-WCSim.sh $HYPERKDIR/
 
-### Get WCSim fork with the OD
-RUN cd $HYPERKDIR \
-    && git clone https://github.com/P3tru/WCSim \
-    && cd $WCSIMDIR \
-    && git checkout -b ODTesting
+
+
 
 ### Open terminal
 CMD ["/bin/bash"]
