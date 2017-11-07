@@ -9,15 +9,8 @@ services:
   - docker
 
 before_install:
-  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-  - sudo apt-get update
-  - sudo apt-get -y install docker-ce
-  - docker --version
   - docker pull brichards64/test
-  - docker run -v `pwd`:/root/outfolder brichards64/test /bin/sh -c "cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd /root/outfolder; make clean; make rootcint; make > /root/outfolder/testlog; echo hello > bentest; ls"
-  - docker run brichards64/test /bin/sh -c "cd /root/HyperK/WCSim; ls"
-  - cat testlog
+  - docker run -v `pwd`:/root/outfolder brichards64/test /bin/sh -c "cd /root/HyperK; ls; source /root/HyperK/env-WCSim.sh; cd /root/outfolder; make clean; make rootcint; make > /root/outfolder/testlog; echo hello > bentest"
 
 script:
-  - true
+  - if [ -e bentest ]; then true; else false; fi
