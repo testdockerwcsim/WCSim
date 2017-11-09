@@ -10,13 +10,12 @@ services:
 
 before_install:
   - docker pull brichards64/wcsim
-  - docker run -v `pwd`:/root/HyperK/WCSim brichards64/wcsim /bin/sh -c " source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; make clean; make rootcint; make;  ls"
-  - docker run -v `pwd`:/root/HyperK/WCSim brichards64/wcsim /bin/sh -c "source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; ./exe/bin/Linux-g++/WCSim WCSim.mac"
-
 
 script:
+  - docker run -v `pwd`:/root/HyperK/WCSim brichards64/wcsim /bin/sh -c " source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; make clean; make rootcint; make;  ls"
+  - docker run -v `pwd`:/root/HyperK/WCSim brichards64/wcsim /bin/sh -c "source /root/HyperK/env-WCSim.sh; cd /root/HyperK/WCSim; ./exe/bin/Linux-g++/WCSim WCSim.mac"
   - if [ -e ./exe/bin/Linux-g++/WCSim ]; then true; else false; fi
-  - if [ -e wcsim.rootd ]; then true; else false; fi
+  - if [ -e wcsim.root ]; then true; else false; fi
 
 notifications:
   email:
