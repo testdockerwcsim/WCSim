@@ -16,7 +16,7 @@ before_install:
 
 script:
   - if [ -e ./exe/bin/Linux-g++/WCSim ]; then true; else false; fi
-  - if [ -e wcsim.root ]; then true; else false; fi
+  - if [ -e wcsim.rootd ]; then true; else false; fi
 
 notifications:
   email:
