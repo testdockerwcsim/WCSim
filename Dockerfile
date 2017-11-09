@@ -33,6 +33,7 @@ RUN yum install -y \
 ### Setup environment
 RUN mkdir /root/HyperK
 ENV HYPERKDIR /root/HyperK
+RUN export HYPERKDIR
 
 ### Downloading ROOT
 RUN cd $HYPERKDIR \
@@ -94,10 +95,12 @@ ENV G4WORKDIR $HYPERKDIR/WCSim/exe
 ENV WCSIMDIR $HYPERKDIR/WCSim
 ENV G4INSTALL $HYPERKDIR/Geant4-10.1.3-Linux
 ENV G4LIB $G4INSTALL/lib
+RUN export G4WORKDIR
+RUN export WCSIMDIR
+RUN export G4INSTALL
+RUN export G4LIB
 
 ADD env-WCSim.sh $HYPERKDIR/
-
-
 
 
 ### Open terminal
